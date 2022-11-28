@@ -56,7 +56,7 @@ const ProductCard = ({ product }) => {
           <button
             title='Remove'
             onClick={() =>
-              dispatch({ type: REMOVE_FROM_CART, payload: product._id })
+              dispatch({ type: REMOVE_FROM_CART, payload: product })
             }
             className='flex justify-between px-3 bg-red-500 text-white p-1 rounded-full flex-1'
           >
