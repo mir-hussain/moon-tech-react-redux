@@ -13,16 +13,11 @@ const productReducer = (state = initialState, action) => {
 
   switch (action.type) {
     case ADD_TO_CART:
-      if (selectedProduct) {
-        const newCart = state.cart.filter(
-          (product) => product._id !== selectedProduct._id
-        );
-
-        selectedProduct.quantity = selectedProduct.quantity + 1;
-
+      if (selectedProduct) {        
+        selectedProduct.quantity++;
         return {
           ...state,
-          cart: [...newCart, selectedProduct],
+          cart: [...state.cart],
         };
       }
       return {
@@ -31,14 +26,12 @@ const productReducer = (state = initialState, action) => {
       };
     case REMOVE_FROM_CART:
       if (selectedProduct.quantity > 1) {
-        const newCart = state.cart.filter(
-          (product) => product._id !== selectedProduct._id
-        );
-        selectedProduct.quantity = selectedProduct.quantity - 1;
+        
+        selectedProduct.quantity--;
 
         return {
           ...state,
-          cart: [...newCart, selectedProduct],
+          cart: [...state.cart],
         };
       }
       return {
